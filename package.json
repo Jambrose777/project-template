@@ -1,0 +1,34 @@
+{
+  "name": "project-template",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "24.18.1",
+    "pnpm": "11.18.0"
+  },
+  "packageManager": "pnpm@11.18.0",
+  "scripts": {
+    "build": "pnpm --filter @project-template/shared build && pnpm --filter @project-template/api-contract build && pnpm --filter @project-template/backend build && pnpm --filter @project-template/frontend build && pnpm --filter @project-template/desktop build",
+    "dev": "concurrently -n backend,frontend -c blue,green \"pnpm --filter @project-template/backend dev\" \"pnpm --filter @project-template/frontend dev\"",
+    "dev:backend": "pnpm --filter @project-template/backend dev",
+    "dev:frontend": "pnpm --filter @project-template/frontend dev",
+    "dev:desktop": "pnpm --filter @project-template/desktop dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "test": "pnpm build && pnpm --filter @project-template/backend test && pnpm --filter @project-template/frontend test",
+    "typecheck": "pnpm --filter @project-template/shared typecheck && pnpm --filter @project-template/api-contract typecheck && pnpm --filter @project-template/backend typecheck && pnpm --filter @project-template/frontend typecheck && pnpm --filter @project-template/desktop typecheck",
+    "package:mac": "pnpm --filter @project-template/desktop package:mac",
+    "package:win": "pnpm --filter @project-template/desktop package:win",
+    "story:done": "node scripts/move-story-to-done.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "concurrently": "10.0.4",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.2.12",
+    "prettier": "3.9.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.65.0"
+  }
+}
