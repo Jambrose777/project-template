@@ -3,11 +3,10 @@ import { join } from 'node:path';
 
 import { SYNC_MARKER_FILENAME } from '@project-template/shared';
 
-// Story 53: "Sync data across laptops via cloud-sync folder". Whether the
-// configured application data directory is a genuinely new setup, already
-// has a readable database, or shows some trace of prior use without a
-// readable database - the third case is what triggers this story's
-// "looks incomplete or like it's mid-sync" launch warning.
+// Whether the configured application data directory is a genuinely new
+// setup, already has a readable database, or shows some trace of prior use
+// without a readable database - the third case is what triggers the
+// launch-time "looks incomplete or like it's mid-sync" warning.
 export type DirectoryState = 'new' | 'ready' | 'incomplete';
 
 // SQLite's fixed 16-byte file-header magic string

@@ -15,7 +15,7 @@ export interface SaveStatusToastHandle {
 }
 
 // The shared entry point every save/update/move/duplicate/delete/lock/unlock
-// mutation uses to drive its toast (story 3). Call `start()` when the
+// mutation uses to drive its toast. Call `start()` when the
 // mutation begins, then `markSaved()` or `markFailed(error)` once it
 // settles; `markFailed` accepts the thrown/returned error directly and
 // extracts its Problem Details `detail`, `status`, and `type` for display.

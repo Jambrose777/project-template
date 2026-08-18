@@ -5,7 +5,7 @@ import { AppHeader } from '@/shared/navigation';
 
 // next/navigation's useRouter has no real implementation outside the
 // Next.js router context, and AppHeader calls it directly (for its
-// unsaved-changes-guarded navigation, story 38).
+// unsaved-changes-guarded navigation).
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
 }));

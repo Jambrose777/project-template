@@ -54,7 +54,7 @@
   --shadow-panel: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-modal: 0 10px 25px rgba(0, 0, 0, 0.5);
 
-  /* The app supports one desktop breakpoint (see story 8); narrower
+  /* The app supports one desktop breakpoint; narrower
      viewports are not guaranteed. Page content has no max-width and fills
      the viewport. Spacing uses Tailwind's default numeric scale (p-2, p-4,
      p-6, p-8, p-12, p-16, p-24), which already lands on our chosen 8px-based
@@ -77,11 +77,10 @@
 
   body {
     /* `height` (not `min-height`): gives flex children a definite height to
-       grow into via `flex-1`/`h-full` (needed by the binder layout grid,
-       story 8) while short pages look identical to before - a block box
-       with `overflow: visible` never clips or hides taller content, so
-       document-level scrolling for tall pages (forms, binder lists, etc.)
-       is unaffected. */
+       grow into via `flex-1`/`h-full` (needed by full-height page layouts)
+       while short pages look identical to before - a block box with
+       `overflow: visible` never clips or hides taller content, so
+       document-level scrolling for tall pages is unaffected. */
     height: 100%;
     display: flex;
     flex-direction: column;

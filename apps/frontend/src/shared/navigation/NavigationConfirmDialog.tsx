@@ -5,11 +5,10 @@ import { useEffect, useRef } from 'react';
 import { useModalFocusTrap } from '@/shared/hooks/useModalFocusTrap';
 
 // The generic "leave without saving?" confirmation dialog behind
-// `useNavigationGuard` (story 38's navigate-away confirmation). Modeled on
-// `DeleteBinderConfirmDialog`'s minimal two-button dialog shell/Escape
-// handling, but reusable across any feature that registers a guard message
-// via `useSetNavigationGuardMessage` rather than being specific to one
-// caller.
+// `useNavigationGuard`'s navigate-away confirmation. A minimal two-button
+// dialog shell with Escape handling, reusable across any feature that
+// registers a guard message via `useSetNavigationGuardMessage` rather than
+// being specific to one caller.
 export function NavigationConfirmDialog({
   message,
   onConfirm,

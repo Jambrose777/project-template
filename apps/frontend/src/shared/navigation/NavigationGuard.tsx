@@ -16,14 +16,13 @@ const NavigationGuardContext = createContext<NavigationGuardContextValue>({
   setMessage: () => {},
 });
 
-// Mounted once in the root layout (story 38's navigate-away confirmation),
-// above both `AppHeader` and every routed page, so any in-app navigation
-// affordance (the header's home link, the binder route's own tab bar) can
-// guard against leaving while a feature elsewhere in the tree has
+// Mounted once in the root layout, above both `AppHeader` and every routed
+// page, so any in-app navigation affordance (e.g. the header's home link)
+// can guard against leaving while a feature elsewhere in the tree has
 // unsaved changes - mirroring `AppHeaderTitleProvider`'s "register from
 // below, read from above" pattern. Only one feature is ever expected to
-// hold the guard at a time (currently the Card List tab's price-review
-// state), so a single `message` slot - rather than a stack - is enough.
+// hold the guard at a time, so a single `message` slot - rather than a
+// stack - is enough.
 export function NavigationGuardProvider({ children }: { children: React.ReactNode }) {
   const [message, setMessage] = useState<string | null>(null);
   const [pendingProceed, setPendingProceed] = useState<(() => void) | null>(null);

@@ -21,7 +21,7 @@ const READY_CHECK_TIMEOUT_MS = 20_000;
 const READY_CHECK_INTERVAL_MS = 200;
 
 // Spawns the bundled Next.js production server (`next start`) as a local
-// child process (story 47) and resolves once it's accepting connections, so
+// child process and resolves once it's accepting connections, so
 // the `BrowserWindow` isn't pointed at it too early.
 export async function startFrontendProcess({
   frontendDirectory,
@@ -86,8 +86,8 @@ function waitForPortOpen(child: ChildProcess, host: string, port: number): Promi
   });
 }
 
-// Closing the app's window fully quits it (story 47's "no system tray/
-// background-running mode" requirement) - `kill()` here is what actually
+// Closing the app's window fully quits it (no system tray/
+// background-running mode) - `kill()` here is what actually
 // terminates this child process as part of that shutdown, leaving nothing
 // orphaned in the background.
 function stopChildProcess(child: ChildProcess): void {

@@ -41,8 +41,7 @@ function backupDatabaseFile(databaseFile: string): void {
 
 export interface DatabaseConnection {
   close: () => void;
-  // Story 53: "Sync data across laptops via cloud-sync folder". Folds the
-  // WAL journal's pending contents back into the main `.db` file and
+  // Folds the WAL journal's pending contents back into the main `.db` file and
   // empties the `-wal`/`-shm` side files, leaving a single, self-contained
   // database file safe for a cloud-sync client to pick up - called before
   // quitting (see server.ts's shutdown handling) rather than on every

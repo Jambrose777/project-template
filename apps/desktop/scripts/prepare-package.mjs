@@ -1,17 +1,16 @@
 #!/usr/bin/env node
-// Story 47: "Package and export the application as an executable". Prepares
-// everything `electron-builder` needs before it can produce a `.dmg`/`.exe`:
-// builds every workspace package, then uses `pnpm deploy` to produce a
-// clean, non-symlinked, production-only `node_modules` for the backend and
-// frontend under `.staging/` (electron-builder's `extraResources` config in
-// package.json copies from there rather than the live `apps/backend`/
-// `apps/frontend` directories, so this never touches the real dev
-// `node_modules` pnpm manages for local development), then rebuilds the
-// backend's native dependencies (`better-sqlite3`, `sharp`) against
-// Electron's own Node ABI via `@electron/rebuild` - the prebuilt binaries
-// pnpm installed target the system's plain Node.js ABI, which doesn't match
-// what the packaged app's bundled Electron runtime loads native addons
-// against.
+// Prepares everything `electron-builder` needs before it can produce a
+// `.dmg`/`.exe`: builds every workspace package, then uses `pnpm deploy` to
+// produce a clean, non-symlinked, production-only `node_modules` for the
+// backend and frontend under `.staging/` (electron-builder's
+// `extraResources` config in package.json copies from there rather than
+// the live `apps/backend`/`apps/frontend` directories, so this never
+// touches the real dev `node_modules` pnpm manages for local development),
+// then rebuilds the backend's native dependencies (`better-sqlite3`)
+// against Electron's own Node ABI via `@electron/rebuild` - the prebuilt
+// binaries pnpm installed target the system's plain Node.js ABI, which
+// doesn't match what the packaged app's bundled Electron runtime loads
+// native addons against.
 import { spawnSync } from 'node:child_process';
 import { existsSync, readdirSync, rmSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';

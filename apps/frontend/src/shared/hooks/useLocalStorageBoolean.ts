@@ -3,9 +3,9 @@
 import { useCallback, useSyncExternalStore } from 'react';
 
 // A boolean UI preference persisted in the browser's local storage and
-// restored on later visits (story 22: the binder completion-metrics
-// visibility toggle). Kept generic (a `key` + `defaultValue`) rather than
-// metrics-specific so a future persisted boolean preference can reuse it.
+// restored on later visits. Kept generic (a `key` + `defaultValue`) rather
+// than tied to one specific preference, so any persisted boolean setting
+// can reuse it.
 //
 // Built on `useSyncExternalStore` - React's SSR-safe primitive for reading
 // an external store - rather than a `useState`/`useEffect` hydration pair:

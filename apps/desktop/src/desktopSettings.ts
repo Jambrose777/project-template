@@ -1,10 +1,9 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-// Story 53: "Sync data across laptops via cloud-sync folder". Persisted
-// machine-local desktop app settings - currently just the user's chosen
-// override for where the backend's `APP_DATA_DIRECTORY` points (e.g. a
-// Dropbox/iCloud/OneDrive/Google Drive-managed folder), set via the
+// Persisted machine-local desktop app settings - currently just the user's
+// chosen override for where the backend's `APP_DATA_DIRECTORY` points
+// (e.g. a Dropbox/iCloud/OneDrive/Google Drive-managed folder), set via the
 // frontend's Settings page. Stored as plain JSON directly under
 // `app.getPath('userData')` (never inside the folder it might itself be
 // pointing at), since it needs to be readable before the backend process

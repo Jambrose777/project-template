@@ -6,7 +6,7 @@ import {
 } from '@project-template/shared';
 import { useEffect, useRef, useState } from 'react';
 
-// Applies the shared loading component's display timing (story 6) to a raw
+// Applies the shared loading component's display timing to a raw
 // pending flag: the returned `visible` flag only turns on after `isPending`
 // has been true for `LOADING_INDICATOR_DELAY_MS` (so quick requests never
 // flash a spinner), and once shown stays true for at least

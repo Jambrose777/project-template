@@ -1,4 +1,4 @@
-// Story 47: "Package and export the application as an executable". Bundles the
+// Bundles the
 // Electron main process and preload script with esbuild instead of only
 // transpiling with `tsc`, inlining the desktop package's own runtime
 // dependencies (`get-port`, `@project-template/shared`) directly into

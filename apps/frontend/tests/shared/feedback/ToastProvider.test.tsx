@@ -8,8 +8,7 @@ import type { SaveStatusToastHandle } from '@/shared/feedback';
 // A minimal consumer used to drive the toast system the same way a real
 // mutation would: call start() when the operation begins, then markSaved()
 // or markFailed() once it settles. Each button targets one operation id so
-// tests can assert that concurrent mutations are tracked independently, per
-// story 3's acceptance criteria.
+// tests can assert that concurrent mutations are tracked independently.
 function Harness() {
   const { start } = useSaveStatusToast();
   const handles = useRef<Record<string, SaveStatusToastHandle>>({});

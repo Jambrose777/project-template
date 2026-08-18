@@ -1,11 +1,10 @@
 import { Router } from 'express';
 
-// Story 53: "Sync data across laptops via cloud-sync folder". Shared
-// shape for `/startup/status`, reused by both the temporary pre-database
-// "gate" app (server.ts, when launch-time confirmation is needed) and the
-// real application (app.ts, which always reports no confirmation
-// pending) - see createStartupRouter below for why the same routes are
-// mounted on both.
+// Shared shape for `/startup/status`, reused by both the temporary
+// pre-database "gate" app (server.ts, when launch-time confirmation is
+// needed) and the real application (app.ts, which always reports no
+// confirmation pending) - see createStartupRouter below for why the same
+// routes are mounted on both.
 export type StartupConfirmationReason = 'incomplete-directory' | 'other-machine-recent';
 
 export interface StartupStatus {

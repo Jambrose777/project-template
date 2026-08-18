@@ -10,7 +10,7 @@ interface MigrationJournal {
 }
 
 // The current database schema version: the tag of the newest applied
-// drizzle migration (story 33). The full-data export writes this into its
+// drizzle migration. The full-data export writes this into its
 // manifest, and import requires an exact match so an archive produced by a
 // different schema version is rejected rather than mis-imported. Read from
 // the migration journal (the source of truth for which migrations exist)

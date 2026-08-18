@@ -24,7 +24,7 @@ let mainWindow: BrowserWindow | undefined;
 let backendHandle: BackendProcessHandle | undefined;
 let frontendHandle: FrontendProcessHandle | undefined;
 // Set once the backend's runtime port is known (see startApp) - read by the
-// quit sequence below (story 53) to call the backend's own
+// quit sequence below to call the backend's own
 // `/maintenance/prepare-shutdown` endpoint before falling back to killing
 // its process directly.
 let backendOrigin: string | undefined;
@@ -33,12 +33,12 @@ let backendOrigin: string | undefined;
 // and against `before-quit`'s own `app.quit()` re-entry below looping.
 let isQuitting = false;
 
-// Story 47: "Package and export the application as an executable". Electron's
-// built-in single-instance lock prevents two copies of the app from ever
-// running at once, which would otherwise let two backend processes contend
-// for the same SQLite database file. The *first* instance keeps the lock and
-// registers the 'second-instance' handler below; every later launch attempt
-// fails to acquire it and quits immediately instead of starting a second copy.
+// Electron's built-in single-instance lock prevents two copies of the app
+// from ever running at once, which would otherwise let two backend
+// processes contend for the same SQLite database file. The *first*
+// instance keeps the lock and registers the 'second-instance' handler
+// below; every later launch attempt fails to acquire it and quits
+// immediately instead of starting a second copy.
 const gotSingleInstanceLock = app.requestSingleInstanceLock();
 
 if (!gotSingleInstanceLock) {
@@ -63,7 +63,7 @@ if (!gotSingleInstanceLock) {
     app.quit();
   });
 
-  // Story 53: cleanup (backup + WAL checkpoint via the backend's own
+  // Cleanup (backup + WAL checkpoint via the backend's own
   // `/maintenance/prepare-shutdown` endpoint, falling back to killing the
   // child processes directly) is asynchronous, so the default synchronous
   // quit is deferred once via `preventDefault()` until that finishes, then
@@ -77,7 +77,7 @@ if (!gotSingleInstanceLock) {
   });
 }
 
-// Story 53: shows a native dialog explaining why launch needs confirmation
+// Shows a native dialog explaining why launch needs confirmation
 // (the configured data directory looks incomplete/mid-sync, or another
 // machine's sync marker still looks recent) and lets the user choose to
 // proceed as-is, start fresh (discarding any unreadable/partial database
@@ -129,7 +129,7 @@ async function confirmStartup(
   return { startFresh: !isOtherMachine };
 }
 
-// Story 53: IPC handlers backing the frontend's Settings page (only
+// IPC handlers backing the frontend's Settings page (only
 // reachable there - see preload.cts's `__DESKTOP_SETTINGS__` bridge).
 // Lets the user point `APP_DATA_DIRECTORY` at a cloud-sync client's folder
 // instead of requiring manual environment variable setup.
@@ -175,7 +175,7 @@ async function startApp(): Promise<void> {
   backendOrigin = `http://${DEFAULT_BACKEND_HOST}:${backendPort}`;
   const frontendOrigin = `http://localhost:${frontendPort}`;
 
-  // Story 53: `localStateDirectory` is always Electron's fixed per-OS
+  // `localStateDirectory` is always Electron's fixed per-OS
   // user-data directory, regardless of any data-directory override below -
   // it's where backup snapshots land, and must never itself be inside a
   // folder a cloud-sync client manages. `applicationDataDirectory` is the
@@ -217,7 +217,7 @@ async function startApp(): Promise<void> {
   await mainWindow.loadURL(frontendOrigin);
 }
 
-// Story 53: calls the backend's `/maintenance/prepare-shutdown` endpoint
+// Calls the backend's `/maintenance/prepare-shutdown` endpoint
 // (which backs up, WAL-checkpoints, closes, and exits the backend itself)
 // and awaits its response before falling back to directly killing both
 // child processes - a plain `ChildProcess.kill()` alone can't guarantee a

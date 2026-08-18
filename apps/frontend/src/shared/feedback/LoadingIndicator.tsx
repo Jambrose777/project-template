@@ -33,13 +33,11 @@ interface LoadingIndicatorProps {
   className?: string;
 }
 
-// The shared inline loading indicator (story 6: "Add reusable loading
-// feedback"). Every future story that retrieves data from the backend
-// renders this component, paired with `useDelayedLoading`, instead of
-// building its own spinner markup. `role="status"` gives it the same
+// The shared inline loading indicator. Any component that retrieves data
+// from the backend renders this, paired with `useDelayedLoading`, instead
+// of building its own spinner markup. `role="status"` gives it the same
 // polite-live-region accessibility behavior already used by the "saving"
-// toast (story 3), satisfying this story's "selected library's default
-// accessibility behavior" requirement without a UI component library.
+// toast, without needing a UI component library.
 export function LoadingIndicator({ label, size = '6', className }: LoadingIndicatorProps) {
   return (
     <div role="status" className={`flex items-center ${className ?? 'justify-center p-8'}`}>

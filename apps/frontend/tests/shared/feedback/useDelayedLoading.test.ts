@@ -6,7 +6,7 @@ import { act, renderHook } from '@testing-library/react';
 
 import { useDelayedLoading } from '@/shared/feedback';
 
-// Exercises story 6's display-timing technical requirements in isolation
+// Exercises the display-timing technical requirements in isolation
 // from any consumer component: the indicator only appears after a request
 // has been pending for LOADING_INDICATOR_DELAY_MS, and once shown stays
 // visible for at least LOADING_INDICATOR_MIN_DURATION_MS.

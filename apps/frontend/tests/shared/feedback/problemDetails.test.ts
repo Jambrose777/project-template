@@ -1,6 +1,6 @@
 import { toProblemDetailsInfo } from '@/shared/feedback/problemDetails';
 
-// Covers story 3's acceptance criteria that failed toasts display the
+// Covers the acceptance criteria that failed toasts display the
 // backend-provided error detail and retain status/type for diagnostics,
 // while still degrading gracefully for non-Problem-Details failures (e.g.
 // network errors or unknown thrown values).

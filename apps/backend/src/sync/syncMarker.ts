@@ -4,13 +4,12 @@ import { join } from 'node:path';
 
 import { SYNC_MARKER_FILENAME, SYNC_MARKER_RECENT_THRESHOLD_MS } from '@project-template/shared';
 
-// Story 53: "Sync data across laptops via cloud-sync folder". The marker
-// file's shape: which machine last opened the app against this data
-// directory, and when. `os.hostname()` is used as the machine identifier
-// rather than a generated/persisted id - it's already stable per machine
-// and needs no separate local file to track, and two laptops sharing an
-// identical hostname is rare enough not to matter for this advisory-only
-// check.
+// The marker file's shape: which machine last opened the app against this
+// data directory, and when. `os.hostname()` is used as the machine
+// identifier rather than a generated/persisted id - it's already stable
+// per machine and needs no separate local file to track, and two laptops
+// sharing an identical hostname is rare enough not to matter for this
+// advisory-only check.
 export interface SyncMarker {
   machineId: string;
   updatedAt: string;

@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from 'react';
 
-// Story 53: the desktop app's preload script (apps/desktop/src/preload.cts)
+// The desktop app's preload script (apps/desktop/src/preload.cts)
 // exposes this bridge unconditionally whenever the frontend is running
 // inside the Electron shell, so its mere presence is how any page/component
 // tells desktop apart from a plain browser tab. Declared globally here
@@ -42,8 +42,8 @@ function getServerSnapshot(): boolean {
   return false;
 }
 
-// Whether the app is currently running inside the Electron desktop shell
-// (story 53), rather than a plain browser tab - used to gate desktop-only
+// Whether the app is currently running inside the Electron desktop shell,
+// rather than a plain browser tab - used to gate desktop-only
 // UI like the Settings page/button. Built on `useSyncExternalStore` so the
 // server render and first client render both report `false`, then a real
 // desktop client re-renders `true` once hydrated, without triggering a

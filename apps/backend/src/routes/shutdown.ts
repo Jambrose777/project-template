@@ -10,13 +10,12 @@ export interface CreateShutdownRouterOptions {
   localStateDirectory: string;
 }
 
-// Story 53: "Sync data across laptops via cloud-sync folder". Writes a
-// local backup snapshot, then checkpoints the WAL into the main database
-// file so the data directory is left as a single sync-safe file, and
-// finally closes the connection. Shared by the HTTP route below (the
-// desktop app's quit sequence) and server.ts's own SIGINT/SIGTERM
-// handling, so a plain `Ctrl+C` during local development leaves the data
-// directory in exactly the same state as the desktop app's quit does.
+// Writes a local backup snapshot, then checkpoints the WAL into the main
+// database file so the data directory is left as a single sync-safe file,
+// and finally closes the connection. Shared by the HTTP route below (the
+// desktop app's quit sequence) and server.ts's own SIGINT/SIGTERM handling,
+// so a plain `Ctrl+C` during local development leaves the data directory
+// in exactly the same state as the desktop app's quit does.
 export function performGracefulShutdown(options: CreateShutdownRouterOptions): void {
   const { connection, databaseFile, filesDirectory, localStateDirectory } = options;
 

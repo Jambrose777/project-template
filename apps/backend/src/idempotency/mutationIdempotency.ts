@@ -45,7 +45,7 @@ export function findIdempotentOutcome(
   };
 }
 
-// Persists one mutation's outcome for the retention window (story 26).
+// Persists one mutation's outcome for the retention window.
 export function saveIdempotentOutcome(
   database: DatabaseConnection['database'],
   scope: string,

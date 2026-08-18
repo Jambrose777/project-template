@@ -24,13 +24,12 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         {/* Mounted once so every page can start/update save-status toasts
-            through useSaveStatusToast (story 3). */}
+            through useSaveStatusToast. */}
         <ToastProvider>
-          {/* Story 38: mounted above the header and routed pages so any
-              in-app navigation (the header's home link, a binder route's
-              tab bar) can guard against leaving while a feature further
-              down the tree (currently just the Card List tab's price
-              review) has unsaved changes. */}
+          {/* Mounted above the header and routed pages so any in-app
+              navigation (e.g. the header's home link) can guard against
+              leaving while a feature further down the tree has unsaved
+              changes. */}
           <NavigationGuardProvider>
             {/* Persistent header (every page) with a link back to the home
                 page. The title provider wraps both the header and the routed

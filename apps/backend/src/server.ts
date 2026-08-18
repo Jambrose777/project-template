@@ -15,13 +15,12 @@ import {
 import { evaluateDirectoryState } from './sync/directoryState.js';
 import { findRecentOtherMachineMarker, writeSyncMarker } from './sync/syncMarker.js';
 
-// Story 53: "Sync data across laptops via cloud-sync folder". Before the
-// database is opened, briefly runs a minimal, database-free Express app
-// on the backend's normal port/host, exposing just `/startup/status`
-// (reporting `status` below) and `/startup/confirm` (resolving this
-// promise once the desktop app answers). Mounting the same two routes
-// here as on the real application (see main() below) means a caller
-// polling `/startup/status` never needs to know which phase - this
+// Before the database is opened, briefly runs a minimal, database-free
+// Express app on the backend's normal port/host, exposing just
+// `/startup/status` (reporting `status` below) and `/startup/confirm`
+// (resolving this promise once the desktop app answers). Mounting the same
+// two routes here as on the real application (see main() below) means a
+// caller polling `/startup/status` never needs to know which phase - this
 // temporary gate, or the real app - is currently listening on the port.
 function waitForStartupConfirmation(status: StartupStatus): Promise<StartupConfirmDecision> {
   return new Promise((resolve) => {

@@ -1,6 +1,5 @@
-// The 3 save-status toast states from story 3's acceptance criteria. There is
-// no separate "warning" state — see styling.instructions.md's "Toast
-// notifications" section.
+// The 3 save-status toast states. There is no separate "warning" state —
+// see styling.instructions.md's "Toast notifications" section.
 export type ToastStatus = 'saving' | 'saved' | 'failed';
 
 // The Problem Details fields a failed toast needs to display the backend's

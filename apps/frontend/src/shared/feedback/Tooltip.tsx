@@ -137,6 +137,10 @@ export function Tooltip({
   }, [isVisible, anchor]);
 
   useEffect(() => {
+    // Deliberate: this is the standard "only render on the client" gate for
+    // SSR hydration safety (see the file header). It doesn't read/react to
+    // any external state, so it never cascades into repeated re-renders.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

@@ -7,9 +7,9 @@ describe('LoadingIndicator', () => {
     render(<LoadingIndicator label="Loading items…" />);
 
     // `role="status"` gives the indicator the same polite-live-region
-    // accessibility behavior as the shared "saving" toast (story 3),
-    // satisfying story 6's "selected library's default accessibility
-    // behavior" requirement without a UI component library.
+    // accessibility behavior as the shared "saving" toast, satisfying the
+    // "selected library's default accessibility behavior" requirement
+    // without a UI component library.
     expect(screen.getByRole('status')).toHaveTextContent('Loading items…');
   });
 

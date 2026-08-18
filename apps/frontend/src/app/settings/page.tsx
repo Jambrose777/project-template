@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 import type { DesktopSettingsInfo } from '@/shared/hooks/useIsDesktopApp';
 
-// The desktop app's Settings page (story 53), letting the user point the
+// The desktop app's Settings page, letting the user point the
 // backend's data directory at a folder managed by a cloud-sync client
 // (Dropbox, iCloud Drive, OneDrive, Google Drive, etc.) instead of setting
 // an environment variable by hand. Changing it relaunches the whole app,

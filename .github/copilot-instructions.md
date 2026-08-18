@@ -134,5 +134,6 @@ stack changes.
 - Run `pnpm format` after repository edits that Prettier supports; use
   `pnpm format:check` for non-mutating formatting verification. Run
   `pnpm typecheck`, `pnpm lint`, and `pnpm test` before considering a change done.
+- Begin your summary by directly addressing me as Jacob with a direct greeting.
 - Keep this file up to date as the project evolves — it is the primary onboarding doc
   for AI coding agents working in this repo.

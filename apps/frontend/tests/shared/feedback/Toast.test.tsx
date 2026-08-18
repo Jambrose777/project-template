@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Toast } from '@/shared/feedback/Toast';
 import type { ToastEntry } from '@/shared/feedback/types';
 
-// Covers story 3's per-status rendering requirements: a saving toast that
+// Covers the per-status rendering requirements: a saving toast that
 // stays visible, a green saved toast, and a red failed toast with a
 // user-dismiss control. Colors are asserted through the Tailwind tokens
 // documented in styling.instructions.md (bg-success / bg-error) since exact
