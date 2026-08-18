@@ -34,8 +34,11 @@ TBD. Replace this section with the new project's actual product vision once deci
 - Release automation: [.github/workflows/release.yml](../.github/workflows/release.yml)
   builds the macOS `.dmg` and Windows NSIS installer in CI (on `macos-latest`/
   `windows-latest` GitHub-hosted runners) and uploads them as assets on the matching
-  GitHub Release, triggered by pushing a `v*.*.*` tag or via manual `workflow_dispatch`
-  against an existing tag. `apps/desktop/package.json`'s `build.mac.artifactName`/
+  GitHub Release. Disabled by default in this template — the `push` tag trigger is
+  commented out, so it currently only runs via manual `workflow_dispatch` against an
+  existing tag, until the early backlog story for enabling/testing this workflow
+  verifies the packaged installers and re-enables the `push` trigger.
+  `apps/desktop/package.json`'s `build.mac.artifactName`/
   `build.nsis.artifactName` fix each installer's filename (no embedded version number),
   so the root [README.md](../README.md)'s `releases/latest/download/<filename>` links
   keep resolving to the newest build across releases.
@@ -89,9 +92,3 @@ already fully known.
 - The story's `**Status:**` marker is updated to `Done`, its file is moved from
   `ready-for-dev/` into [`completed/`](stories/completed/), and
   [docs/stories/README.md](stories/README.md) is updated to match.
-
-## Next steps
-
-1. Define the new project's product vision and core data model.
-2. Decide whether to keep `apps/desktop` (see the first backlog story).
-3. Add the new project's first stories to the backlog above.

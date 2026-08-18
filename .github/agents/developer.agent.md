@@ -17,8 +17,10 @@ previously implemented contracts), `docs/api-endpoints.md`, and `docs/data-types
   `packages/shared/src/defaults.ts` and are imported via `@project-template/shared`
   — search there before adding any default, per
   `.github/instructions/coding-conventions.instructions.md`.
-- DO NOT write or maintain test files — hand off to the Tester role for new/updated
-  tests.
+- DO NOT write new tests or expand test coverage — stay focused on application code.
+  Fix a test only when your change broke it (update it to match the new behavior), and
+  flag any gaps in coverage instead of filling them yourself. (A project can add a
+  dedicated Tester role if it wants a developer/tester split.)
 - DO NOT mark a story's status as `Done`, move its file into `docs/stories/completed/`,
   or `git commit` anything until the user explicitly triggers it — running the
   `/done` prompt ([.github/prompts/done.prompt.md](../prompts/done.prompt.md)) in chat,
@@ -38,9 +40,9 @@ previously implemented contracts), `docs/api-endpoints.md`, and `docs/data-types
 3. Keep secrets and environment-specific config in environment variables, not in
    `defaults.ts`. Keep runtime-calculated values near the code that calculates them.
 4. Make small, incremental changes scoped to the current story.
-5. Run `pnpm typecheck`/`pnpm lint`/`pnpm build` (or package-scoped equivalents) to
-   validate changes, and run `pnpm format` after edits. Do not run the test suite —
-   leave that verification to the Tester role.
+5. Run `pnpm typecheck`/`pnpm lint`/`pnpm build`/`pnpm test` (or package-scoped
+   equivalents) to validate changes, and run `pnpm format` after edits. Fix any test
+   that your change broke; don't add new tests for uncovered behavior.
 6. When a story's implementation is finished, say so and stop — do not mark it `Done`
    or commit yet. Wait for the user to run the `/done` prompt (or otherwise explicitly
    ask you to finish/commit the story) before proceeding to step 7.
@@ -57,5 +59,5 @@ previously implemented contracts), `docs/api-endpoints.md`, and `docs/data-types
 ## Output Format
 
 Working code changes plus a brief summary of what was implemented, any commands run to
-verify it, and any follow-ups needed (e.g. tests for the Tester role to add/run, specs to
+verify it, and any follow-ups needed (e.g. test coverage gaps to fill, specs to
 clarify).

@@ -58,8 +58,12 @@ stack changes.
     for deciding early whether a given project keeps this app at all.
 - **Release automation:** [.github/workflows/release.yml](workflows/release.yml)
   builds the macOS `.dmg` and Windows NSIS installer in CI and uploads them as assets
-  on the matching GitHub Release, triggered by pushing a `v*.*.*` tag or via manual
-  `workflow_dispatch` against an existing tag. `apps/desktop/package.json`'s
+  on the matching GitHub Release. Disabled by default in this template — the `push`
+  tag trigger is commented out, so it currently only runs via manual
+  `workflow_dispatch` against an existing tag, until
+  [docs/stories/ready-for-dev/0003-enable-and-test-release-workflow.md](../docs/stories/ready-for-dev/0003-enable-and-test-release-workflow.md)
+  verifies the packaged installers and re-enables the `push` trigger.
+  `apps/desktop/package.json`'s
   `build.mac.artifactName`/`build.nsis.artifactName` fix each installer's filename (no
   embedded version number) so the root [README.md](../README.md)'s
   `releases/latest/download/<filename>` links keep resolving to the newest build.

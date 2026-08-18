@@ -1,18 +1,20 @@
 name: Release desktop app
 
-# Builds and publishes the macOS and Windows desktop installers whenever a
-# version tag (e.g. v0.1.0) is pushed, or on demand via workflow_dispatch
-# against an existing tag. This automates what was previously a manual
-# `pnpm package:mac`/`pnpm package:win` + hand-upload step (story 47:
-# "Package and export the application as an executable"), and keeps the
-# README's fixed-filename download links (apps/desktop/package.json's
-# `build.mac.artifactName`/`build.nsis.artifactName`) valid across releases,
-# since `softprops/action-gh-release` attaches assets to the release matching
-# the pushed tag.
+# Builds and publishes the macOS and Windows desktop installers. Disabled by default
+# for a new project built from this template: the `push` tag trigger is commented out
+# below, so this only runs via a manual workflow_dispatch against an existing tag,
+# until the project completes the early backlog story for enabling and testing this
+# workflow's output (the actual packaged executables) end to end. Once that story is
+# done, uncomment the `push` trigger below to resume automatic releases on tag push.
+# This automates what would otherwise be a manual `pnpm package:mac`/`pnpm package:win`
+# + hand-upload step, and keeps the README's fixed-filename download links
+# (apps/desktop/package.json's `build.mac.artifactName`/`build.nsis.artifactName`)
+# valid across releases, since `softprops/action-gh-release` attaches assets to the
+# release matching the pushed tag.
 on:
-  push:
-    tags:
-      - 'v*.*.*'
+  # push:
+  #   tags:
+  #     - 'v*.*.*'
   workflow_dispatch:
     inputs:
       tag_name:

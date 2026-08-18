@@ -110,7 +110,14 @@ pnpm package:win    # Windows NSIS installer, output to apps/desktop/release/
 Packaging can take a few minutes on first run. There is no auto-updater; each build
 produces a standalone installer.
 
-To publish a release without building locally, push a tag matching `v*.*.*`:
+The release workflow is disabled by default in this template (see
+[story 3](docs/stories/ready-for-dev/0003-enable-and-test-release-workflow.md)) — its
+`push` tag trigger is commented out in
+[.github/workflows/release.yml](.github/workflows/release.yml) until the packaged
+installers have been verified on each platform. Until then, publish a release by
+running the workflow manually via `workflow_dispatch` from the GitHub Actions tab,
+supplying an existing tag name. Once story 3 is done, publishing a release is as
+simple as pushing a tag matching `v*.*.*`:
 
 ```sh
 git tag v0.1.0
