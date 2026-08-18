@@ -33,11 +33,6 @@ Pushing a version tag (e.g. `v0.1.1`) triggers
 [.github/workflows/release.yml](.github/workflows/release.yml), which builds both
 installers in CI and attaches them to that tag's release automatically.
 
-See story 3
-([docs/stories/ready-for-dev/0003-review-overall-architecture.md](docs/stories/ready-for-dev/0003-review-overall-architecture.md))
-for deciding whether a given project built from this template keeps the desktop app at
-all.
-
 ## Architecture
 
 This repository is a pnpm workspace organized into applications and shared packages:
