@@ -22,6 +22,11 @@ sections as decided.
 - Interactive components (modals, toasts, comboboxes, etc.) are built fully custom. Do
   not add a headless/component UI library (e.g. Radix, shadcn) for dialog semantics,
   focus trapping, or similar behavior — implement it directly.
+- A living visual reference of every token and documented UI pattern renders at the
+  `/style-guide` route (`apps/frontend/src/app/style-guide/page.tsx`). It's the same
+  starting basis for every project built from this template — keep it in sync
+  whenever tokens or conventions change, and see the early backlog story for
+  reviewing/adjusting it for a specific project's needs.
 
 ## Color palette
 
@@ -259,3 +264,20 @@ numeric step for the same layer, low to high:
 - A confirmation dialog nested above an already-open modal (e.g. a delete
   confirmation launched from within another modal) — the arbitrary `z-[60]` value,
   one step above the standard modal/toast layer.
+
+## Virtualized lists & grids (TanStack Virtual, when adopted by a project)
+
+If/when a project adds `@tanstack/react-virtual` for a long list/grid, use its
+`useVirtualizer` — the only virtualization approach documented here; don't reach
+for a different windowing library.
+
+- Convention: a `ref`-tracked scrollable container passed as `getScrollElement`, a
+  fixed `estimateSize` per row (a grid groups multiple items into one virtualized
+  "row"), and `overscan: 5` so a handful of off-screen rows stay rendered to reduce
+  scroll-triggered pop-in.
+- Rows render absolutely positioned inside a container sized to the virtualizer's
+  total height, each translated into place via a `transform:
+translateY(${virtualRow.start}px)` inline style.
+- When an item needs to be revealed programmatically (e.g. after undo/redo, or a
+  newly-created item), call the virtualizer's own `scrollToIndex`, rather than
+  scrolling the container manually.

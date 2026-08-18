@@ -68,6 +68,14 @@ export function Tooltip({
 }) {
   const wrapperRef = useRef<HTMLSpanElement>(null);
   const bubbleRef = useRef<HTMLSpanElement>(null);
+  // Tracks whether we're past the initial hydration pass. The portal can
+  // only render client-side (there's no `document` on the server), so
+  // gating it on `typeof document !== 'undefined'` directly would make the
+  // very first client render - during hydration - differ from the
+  // server-rendered HTML, since `document` already exists in the browser
+  // by then. Setting this in an effect (which only runs after hydration
+  // completes) keeps that first client render identical to the server's.
+  const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [anchor, setAnchor] = useState({ top: 0, left: 0 });
   // Extra horizontal pixel nudge (on top of `align`'s translate-x) applied
@@ -128,6 +136,10 @@ export function Tooltip({
     }
   }, [isVisible, anchor]);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <span
       ref={wrapperRef}
@@ -138,7 +150,7 @@ export function Tooltip({
       onBlur={hide}
     >
       {children}
-      {typeof document !== 'undefined' &&
+      {mounted &&
         createPortal(
           <span
             ref={bubbleRef}
