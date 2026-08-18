@@ -61,5 +61,4 @@ previously implemented contracts), `docs/api-endpoints.md`, and `docs/data-types
 ## Output Format
 
 Working code changes plus a brief summary of what was implemented, any commands run to
-verify it, and any follow-ups needed (e.g. test coverage gaps to fill, specs to
-clarify).
+verify it, and any follow-ups needed (e.g. specs to clarify).

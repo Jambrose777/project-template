@@ -7,12 +7,6 @@ applications: a pnpm workspace with a working Next.js frontend, an Express +
 SQLite/Drizzle backend behind an OpenAPI-first contract, and an Electron desktop
 shell with multi-laptop cloud-sync support already scaffolded end to end.
 
-**Status:** the scaffolding is implemented and working (`GET /health` round-trips
-through the full stack, desktop packaging builds successfully). When starting a new
-project from this template, replace the product vision in
-[docs/planning.md](../docs/planning.md) and add real stories; update this file if the
-stack changes.
-
 ## Stack
 
 - **Repository:** pnpm workspace — `apps/{backend,frontend,desktop}` and
@@ -105,6 +99,7 @@ stack changes.
 
 ## Working conventions
 
+- Begin your summary by directly addressing me as Jacob with a direct greeting.
 - Planning and requirements live in [docs/](../docs). Check
   [docs/planning.md](../docs/planning.md) before starting new work — it holds the
   product vision, tech stack, and definition of done.
@@ -134,6 +129,5 @@ stack changes.
 - Run `pnpm format` after repository edits that Prettier supports; use
   `pnpm format:check` for non-mutating formatting verification. Run
   `pnpm typecheck`, `pnpm lint`, and `pnpm test` before considering a change done.
-- Begin your summary by directly addressing me as Jacob with a direct greeting.
 - Keep this file up to date as the project evolves — it is the primary onboarding doc
   for AI coding agents working in this repo.
