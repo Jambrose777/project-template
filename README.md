@@ -13,8 +13,14 @@ This template originated as a capstone project for learning and utilizing AI
 Download the latest desktop build from the
 [GitHub Releases page](https://github.com/Jambrose777/project-template/releases/latest):
 
+<!--
+Commented out until story 5 (docs/stories/ready-for-dev/0005-enable-and-test-release-workflow.md)
+verifies the packaged installers and re-enables the release workflow's push trigger --
+until then there's no released asset for these fixed-filename links to resolve to.
+
 - [Download for macOS (.dmg)](https://github.com/Jambrose777/project-template/releases/latest/download/project-template-mac-arm64.dmg)
 - [Download for Windows (.exe)](https://github.com/Jambrose777/project-template/releases/latest/download/project-template-win-setup.exe)
+-->
 
 These links point at fixed asset filenames produced by `pnpm package:mac`/
 `pnpm package:win` (see [apps/desktop/package.json](apps/desktop/package.json)'s

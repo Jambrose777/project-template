@@ -17,6 +17,9 @@
   succeeds), before relying on the workflow for real releases.
 - Once both installers have been verified, the `push` tag trigger in `release.yml` is
   uncommented so pushing a `v*.*.*` tag resumes triggering automatic releases.
+- The commented-out download links in the [README.md](../../../README.md) "Download"
+  section (macOS `.dmg` and Windows `.exe`) are uncommented once a real release with
+  matching assets exists, so the links resolve instead of 404ing.
 - If the project decided in story 3 not to keep the desktop app, this story is marked
   done as not-applicable instead, since `release.yml` is removed as part of that
   decision.
