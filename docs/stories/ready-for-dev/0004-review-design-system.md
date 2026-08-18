@@ -1,4 +1,4 @@
-# 2. Review and adjust the design system for this project
+# 4. Review and adjust the design system for this project
 
 **Status:** Not started
 
@@ -16,10 +16,6 @@
 - Any token or convention that changes is updated consistently in all three places
   above (tokens, written conventions, and the visual reference page) so they never
   drift out of sync.
-- Any documented pattern that isn't needed for this project (e.g. drag-and-drop,
-  virtualization) is either removed from `/style-guide` and
-  `styling.instructions.md`, or left in place as-is if a future story is expected to
-  need it — record which choice was made and why.
 - The project's actual dependencies match what `/style-guide` documents: if a
   pattern's dependency (`@dnd-kit/*`, `@tanstack/react-virtual`, etc.) is adopted,
   it's added to `apps/frontend/package.json`; if a documented pattern is removed

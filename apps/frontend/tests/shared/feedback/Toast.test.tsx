@@ -40,13 +40,13 @@ describe('Toast', () => {
     const toast: ToastEntry = {
       id: 'op-1',
       status: 'failed',
-      detail: 'A binder with this name already exists.',
+      detail: 'A object with this name already exists.',
     };
 
     render(<Toast toast={toast} onDismiss={jest.fn()} />);
 
     const alert = screen.getByRole('alert');
-    expect(alert).toHaveTextContent('A binder with this name already exists.');
+    expect(alert).toHaveTextContent('A object with this name already exists.');
     expect(alert).toHaveClass('bg-error');
   });
 

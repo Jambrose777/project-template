@@ -7,13 +7,13 @@ import { toProblemDetailsInfo } from '@/shared/feedback/problemDetails';
 describe('toProblemDetailsInfo', () => {
   it('extracts detail, status, and type from a Problem Details error', () => {
     const error = {
-      detail: 'A binder with this name already exists.',
+      detail: 'A object with this name already exists.',
       status: 409,
       type: 'https://example.com/problems/duplicate-name',
     };
 
     expect(toProblemDetailsInfo(error)).toEqual({
-      detail: 'A binder with this name already exists.',
+      detail: 'A object with this name already exists.',
       httpStatus: 409,
       problemType: 'https://example.com/problems/duplicate-name',
     });

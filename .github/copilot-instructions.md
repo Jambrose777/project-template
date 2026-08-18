@@ -48,14 +48,14 @@ shell with multi-laptop cloud-sync support already scaffolded end to end.
     since a packaged/branded Electron executable always relaunches itself as the
     full app rather than running as plain Node when given a script path via argv —
     unlike the unpacked dev Electron binary, where that heuristic works implicitly.
-  - See [docs/stories/ready-for-dev/0001-decide-desktop-app-inclusion.md](../docs/stories/ready-for-dev/0001-decide-desktop-app-inclusion.md)
+  - See [docs/stories/ready-for-dev/0003-review-overall-architecture.md](../docs/stories/ready-for-dev/0003-review-overall-architecture.md)
     for deciding early whether a given project keeps this app at all.
 - **Release automation:** [.github/workflows/release.yml](workflows/release.yml)
   builds the macOS `.dmg` and Windows NSIS installer in CI and uploads them as assets
   on the matching GitHub Release. Disabled by default in this template — the `push`
   tag trigger is commented out, so it currently only runs via manual
   `workflow_dispatch` against an existing tag, until
-  [docs/stories/ready-for-dev/0003-enable-and-test-release-workflow.md](../docs/stories/ready-for-dev/0003-enable-and-test-release-workflow.md)
+  [docs/stories/ready-for-dev/0005-enable-and-test-release-workflow.md](../docs/stories/ready-for-dev/0005-enable-and-test-release-workflow.md)
   verifies the packaged installers and re-enables the `push` trigger.
   `apps/desktop/package.json`'s
   `build.mac.artifactName`/`build.nsis.artifactName` fix each installer's filename (no

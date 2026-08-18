@@ -27,8 +27,8 @@ Pushing a version tag (e.g. `v0.1.1`) triggers
 [.github/workflows/release.yml](.github/workflows/release.yml), which builds both
 installers in CI and attaches them to that tag's release automatically.
 
-See the first backlog story
-([docs/stories/ready-for-dev/0001-decide-desktop-app-inclusion.md](docs/stories/ready-for-dev/0001-decide-desktop-app-inclusion.md))
+See story 3
+([docs/stories/ready-for-dev/0003-review-overall-architecture.md](docs/stories/ready-for-dev/0003-review-overall-architecture.md))
 for deciding whether a given project built from this template keeps the desktop app at
 all.
 
@@ -85,8 +85,8 @@ graph TD
 - In development, the frontend and backend run as separate processes (`pnpm dev`)
   and talk over HTTP on `localhost`.
 - In the packaged desktop app, Electron's main process spawns the frontend and
-  backend as managed local child processes instead — see the early backlog story
-  ([docs/stories/ready-for-dev/0001-decide-desktop-app-inclusion.md](docs/stories/ready-for-dev/0001-decide-desktop-app-inclusion.md))
+  backend as managed local child processes instead — see story 3
+  ([docs/stories/ready-for-dev/0003-review-overall-architecture.md](docs/stories/ready-for-dev/0003-review-overall-architecture.md))
   for deciding whether a given project needs this at all.
 - `packages/api-contract`'s `openapi.yaml` is the source of truth for the API shape:
   it generates the frontend's typed client and validates every backend request/
@@ -154,12 +154,12 @@ Packaging can take a few minutes on first run. There is no auto-updater; each bu
 produces a standalone installer.
 
 The release workflow is disabled by default in this template (see
-[story 3](docs/stories/ready-for-dev/0003-enable-and-test-release-workflow.md)) — its
+[story 5](docs/stories/ready-for-dev/0005-enable-and-test-release-workflow.md)) — its
 `push` tag trigger is commented out in
 [.github/workflows/release.yml](.github/workflows/release.yml) until the packaged
 installers have been verified on each platform. Until then, publish a release by
 running the workflow manually via `workflow_dispatch` from the GitHub Actions tab,
-supplying an existing tag name. Once story 3 is done, publishing a release is as
+supplying an existing tag name. Once story 5 is done, publishing a release is as
 simple as pushing a tag matching `v*.*.*`:
 
 ```sh

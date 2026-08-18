@@ -17,7 +17,7 @@ const SPINNER_SIZE_CLASSES: Record<LoadingIndicatorSize, string> = {
 
 interface LoadingIndicatorProps {
   // Accessible status label describing the operation in progress (e.g.
-  // "Loading binders…"). Visually hidden; the spinner alone communicates
+  // "Loading content…"). Visually hidden; the spinner alone communicates
   // the loading state to sighted users.
   label: string;
   // Which of the standard icon sizes to render at (see

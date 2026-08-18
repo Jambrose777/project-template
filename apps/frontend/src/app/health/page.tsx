@@ -12,8 +12,9 @@ type BackendStatus =
   | { state: 'error'; message: string };
 
 // A quick manual backend-connectivity check, moved off the home page so the
-// home page can stay focused on binder actions. Useful during development and
-// troubleshooting to confirm the frontend can reach the backend and its database.
+// home page can stay focused on the app's own actions. Useful during
+// development and troubleshooting to confirm the frontend can reach the
+// backend and its database.
 export default function HealthPage() {
   const [backendStatus, setBackendStatus] = useState<BackendStatus>({ state: 'loading' });
 

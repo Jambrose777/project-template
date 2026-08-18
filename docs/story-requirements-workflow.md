@@ -51,18 +51,20 @@
 - REST and OpenAPI-first API with generated types and Problem Details errors.
 - SQLite with Drizzle ORM; migrations under `apps/backend/drizzle/`.
 - Electron desktop packaging (`apps/desktop`) with multi-laptop cloud-sync support
-  (backup snapshots, sync marker, launch-time confirmation handshake) — see the first
-  backlog story for whether a given project keeps this.
+  (backup snapshots, sync marker, launch-time confirmation handshake) — see story 3
+  (review the overall architecture) for whether a given project keeps this.
 - Jest for backend and frontend unit/integration tests.
 
 ## Current stopping point
 
-This is a fresh template instance with no stories written yet beyond the starter
-desktop-app decision story in `docs/stories/ready-for-dev/`. Resume technical-
-requirements questions with the lowest-numbered story file in
-`docs/stories/needs-refinement/` (check `docs/stories/README.md` for the current list)
-unless the user directs otherwise. Update this section as the new project's own
-backlog develops.
+This is a fresh template instance with five baseline setup stories already fully
+specified in `docs/stories/ready-for-dev/` (rename the project, write the product
+vision, review the overall architecture — including the desktop app decision, review
+the design system, and enable the release workflow) and nothing yet in
+`docs/stories/needs-refinement/`. Resume technical-requirements questions with the
+lowest-numbered story file in `docs/stories/needs-refinement/` (check
+`docs/stories/README.md` for the current list) unless the user directs otherwise.
+Update this section as the new project's own backlog develops.
 
 ## Consistency notes
 

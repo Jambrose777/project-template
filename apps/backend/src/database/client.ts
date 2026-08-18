@@ -14,10 +14,10 @@ const MAX_RETAINED_MIGRATION_BACKUPS = 10;
 // Copies the database file into a sibling `migration-backups` directory,
 // timestamped, immediately before migrations run. This is a safety net in
 // case a future migration has an unanticipated destructive side effect
-// (see the `foreign_keys` handling below for one such bug that already
-// bit this project twice) - restoring is just copying the newest backup
-// back over the live file. A no-op for `:memory:` databases and for the
-// very first run (nothing to back up yet).
+// (see the `foreign_keys` handling below for one such bug) - restoring is
+// just copying the newest backup back over the live file. A no-op for
+// `:memory:` databases and for the very first run (nothing to back up
+// yet).
 function backupDatabaseFile(databaseFile: string): void {
   if (databaseFile === ':memory:' || !existsSync(databaseFile)) {
     return;
@@ -68,18 +68,15 @@ export function createDatabase(databaseFile: string): DatabaseConnection {
   // `migrate()` below, then turned ON afterward for normal app operation.
   // Reasoning: drizzle-kit's generated "recreate table" migrations (used
   // whenever a column change can't be applied in place, e.g. adding a
-  // NOT NULL column - see drizzle/0003_binder_dimension_max.sql and
-  // drizzle/0005_binder_dimension_and_style_fields.sql) bracket themselves with
-  // `PRAGMA foreign_keys=OFF` / `=ON`, but those statements are silently
-  // ignored: SQLite refuses to toggle this pragma while a transaction is
-  // open, and drizzle's migrator wraps every pending migration in one
-  // `BEGIN`/`COMMIT`. Left ON, each migration's `DROP TABLE <parent>`
-  // performs SQLite's documented implicit `DELETE FROM <parent>` before
-  // dropping it, which fires any `ON DELETE CASCADE` action on tables that
-  // reference it - e.g. `cards.binderId` - deleting every card in the
-  // database as an unintended side effect of only touching the `binders`
-  // table's shape. This exact bug deleted all cards twice (migrations
-  // 0003 and 0005) before this fix; toggling the pragma here, outside any
+  // NOT NULL column) bracket themselves with `PRAGMA foreign_keys=OFF` /
+  // `=ON`, but those statements are silently ignored: SQLite refuses to
+  // toggle this pragma while a transaction is open, and drizzle's migrator
+  // wraps every pending migration in one `BEGIN`/`COMMIT`. Left ON, each
+  // migration's `DROP TABLE <parent>` performs SQLite's documented implicit
+  // `DELETE FROM <parent>` before dropping it, which fires any
+  // `ON DELETE CASCADE` action on tables that reference it, deleting rows
+  // in a child table as an unintended side effect of only touching the
+  // parent table's shape. Toggling the pragma here, outside any
   // transaction, actually takes effect for the migration's whole run.
   const database = drizzle(sqlite);
   sqlite.pragma('foreign_keys = OFF');
