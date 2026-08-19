@@ -12,7 +12,7 @@
 // Usage: node scripts/move-story-to-done.mjs <story-number>
 // Example: node scripts/move-story-to-done.mjs 32
 
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -82,8 +82,11 @@ if (storyNumber === 'NaN') {
   fail(`"${storyNumberArg}" is not a valid story number.`);
 }
 
+// Story files in this repo use a zero-padded numeric prefix (e.g.
+// "0001-rename-project.md"), so tolerate any number of leading zeros before
+// the unpadded story number rather than requiring an exact match.
 const candidates = readdirSync(readyForDevDir).filter((name) =>
-  new RegExp(`^${storyNumber}-.+\\.md$`).test(name),
+  new RegExp(`^0*${storyNumber}-.+\\.md$`).test(name),
 );
 if (candidates.length === 0) {
   fail(`No story numbered ${storyNumber} found in docs/stories/ready-for-dev/.`);
@@ -119,6 +122,11 @@ const newPath = path.join(completedDir, newFileName);
 if (existsSync(newPath)) {
   fail(`${newPath} already exists.`);
 }
+
+// git doesn't track empty directories, so docs/stories/completed/ never got
+// created on disk until the first story actually finishes - create it (a
+// no-op once it exists) so `git mv` below has somewhere to move the file to.
+mkdirSync(completedDir, { recursive: true });
 
 execFileSync('git', ['mv', originalPath, newPath], { cwd: repoRoot });
 
